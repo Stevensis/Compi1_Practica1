@@ -12,7 +12,6 @@ import Archivos.*;
  * @author aaron
  */
 public class Compi1_Practica1 {
-
     /**
      * @param args the command line arguments
      */
@@ -21,7 +20,13 @@ public class Compi1_Practica1 {
        LeeFichero l = new LeeFichero();
       // l.lee("Er");
        String obtener = m.abrirArchivo("er");
+       obtener += "asd";
         System.out.println(obtener);
+        System.out.println(m.getNombreA());
+        m.guardarArchivo(obtener, ".er");
+        System.out.println("\n se guardo archivo");
     }
+
+    
     
 }

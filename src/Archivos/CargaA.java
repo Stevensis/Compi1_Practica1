@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package Archivos;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,7 +21,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class CargaA extends javax.swing.JFrame{
     File archivo1;
     FileInputStream entrada;
+    private String nombreA="";
 
+    public String getNombreA() {
+        return nombreA;
+    }
+
+    public void setNombreA(String nombreA) {
+        this.nombreA = nombreA;
+    }
     public CargaA() {
     }
     //Metodo para abrir un archivo, solo funciona para un tipo de filtro
@@ -35,10 +43,12 @@ public class CargaA extends javax.swing.JFrame{
    /**llamamos el metodo que permite cargar la ventana*/
    JFileChooser file=new JFileChooser();
    FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter(filtermi,filterma);
-   file.setFileFilter(filtroImagen);
-   file.showOpenDialog(this);
+   file.setFileFilter(filtroImagen); //aplica el filtro 
+   file.showOpenDialog(this); //abre la ventana
    /**abrimos el archivo seleccionado*/
+   
    File abre=file.getSelectedFile();
+   nombreA = abre.getName(); //se obtiene el nombre del archivo
    /**recorremos el archivo, lo leemos para plasmarlo
    *en el area de texto*/
    if(abre!=null)
@@ -52,7 +62,7 @@ public class CargaA extends javax.swing.JFrame{
          lee.close();
          archivos.close();
     }
-   this.dispose();
+   this.dispose(); //cierra el proceso de la venta
    }
    catch(IOException ex)
    {
@@ -63,16 +73,33 @@ public class CargaA extends javax.swing.JFrame{
   
   return texto;//El texto se almacena en el JTextArea
 }
-    public String[][] getMatriz(){
-        String cadena = abrirArchivo("er");
-        String[][] mm = new String[12][12];
-        int contador=0;
-        String[] separar = cadena.split("\n");
-        for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
-                mm[i][j]=separar[i].charAt(j)+"";
-            }
-        }
-        return mm;
+    public void guardarArchivo(String texto, String filter) {
+ try
+ {
+  String nombre="";
+  JFileChooser file=new JFileChooser();
+  file.showSaveDialog(this);
+  File guarda =file.getSelectedFile();
+ 
+  if(guarda !=null)
+  {
+   /*guardamos el archivo y le damos el formato directamente,
+    * si queremos que se guarde en formato doc lo definimos como .doc*/
+    FileWriter  save=new FileWriter(guarda+filter);
+    save.write(texto);
+    save.close();
+    JOptionPane.showMessageDialog(null,
+         "El archivo se a guardado Exitosamente",
+             "Información",JOptionPane.INFORMATION_MESSAGE);
     }
+  this.dispose();
+ }
+  catch(IOException ex)
+  {
+   JOptionPane.showMessageDialog(null,
+        "Su archivo no se ha guardado",
+           "Advertencia",JOptionPane.WARNING_MESSAGE);
+  }
+ }
+
 }
