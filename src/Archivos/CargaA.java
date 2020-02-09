@@ -83,7 +83,7 @@ public class CargaA extends javax.swing.JFrame{
   
   return texto;//El texto se almacena en el JTextArea
 }
-    public void guardarArchivo(String texto, String filter) {
+    public void guardarComoArchivo(String texto, String filter) {
  try
  {
   String nombre="";
@@ -103,6 +103,26 @@ public class CargaA extends javax.swing.JFrame{
              "Información",JOptionPane.INFORMATION_MESSAGE);
     }
   this.dispose();
+ }
+  catch(IOException ex)
+  {
+   JOptionPane.showMessageDialog(null,
+        "Su archivo no se ha guardado",
+           "Advertencia",JOptionPane.WARNING_MESSAGE);
+  }
+ }
+    public void guardarArchivo(String texto, String pathA) {
+ try
+ { 
+   /*Guardamos
+     pathA es la ruta del archivo "Abierto" */
+    FileWriter  save=new FileWriter(pathA);
+    save.write(texto);
+    save.close();
+    JOptionPane.showMessageDialog(null,
+         "El archivo se a guardado Exitosamente",
+             "Información",JOptionPane.INFORMATION_MESSAGE);
+   
  }
   catch(IOException ex)
   {

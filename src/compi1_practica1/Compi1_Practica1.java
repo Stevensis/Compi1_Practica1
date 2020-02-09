@@ -23,9 +23,10 @@ public class Compi1_Practica1 {
        
         System.out.println(obtener);
         System.out.println(m.getNombreR());
-        obtener += "asd";
+        obtener += "asd Provemos sa mierda \n Ya no se que mas poner \n alv";
         System.out.println(m.getNombreA());
-        m.guardarArchivo(obtener, ".er");
+        m.guardarComoArchivo(obtener, ".er");
+        m.guardarArchivo(obtener, m.getNombreR());
         System.out.println("\n se guardo archivo");
     }
 
