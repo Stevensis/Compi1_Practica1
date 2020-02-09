@@ -22,6 +22,15 @@ public class CargaA extends javax.swing.JFrame{
     File archivo1;
     FileInputStream entrada;
     private String nombreA="";
+    private String nombreR="";
+
+    public String getNombreR() {
+        return nombreR;
+    }
+
+    public void setNombreR(String nombreR) {
+        this.nombreR = nombreR;
+    }
 
     public String getNombreA() {
         return nombreA;
@@ -49,6 +58,7 @@ public class CargaA extends javax.swing.JFrame{
    
    File abre=file.getSelectedFile();
    nombreA = abre.getName(); //se obtiene el nombre del archivo
+   nombreR = abre.getPath();
    /**recorremos el archivo, lo leemos para plasmarlo
    *en el area de texto*/
    if(abre!=null)

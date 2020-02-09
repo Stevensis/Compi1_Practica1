@@ -20,8 +20,10 @@ public class Compi1_Practica1 {
        LeeFichero l = new LeeFichero();
       // l.lee("Er");
        String obtener = m.abrirArchivo("er");
-       obtener += "asd";
+       
         System.out.println(obtener);
+        System.out.println(m.getNombreR());
+        obtener += "asd";
         System.out.println(m.getNombreA());
         m.guardarArchivo(obtener, ".er");
         System.out.println("\n se guardo archivo");
