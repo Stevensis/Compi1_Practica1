@@ -19,27 +19,26 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author aaron
  */
 public class CargaA extends javax.swing.JFrame{
-    JFileChooser seleccionar = new JFileChooser();
     File archivo1;
     FileInputStream entrada;
 
     public CargaA() {
     }
-    
+    //Metodo para abrir un archivo, solo funciona para un tipo de filtro
     public String abrirArchivo(String filter) {
-  String filtermi = filter.toUpperCase();
-  String gilterma = filter.toLowerCase();
+  String filtermi = filter.toUpperCase(); //El filtro lo convierte a mayusculas
+  String filterma = filter.toLowerCase(); //El filtro lo convierte en minusculas
   String aux="";   
   String texto="";
   try
   {
    /**llamamos el metodo que permite cargar la ventana*/
    JFileChooser file=new JFileChooser();
-   FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter("ER","er");
+   FileNameExtensionFilter filtroImagen=new FileNameExtensionFilter(filtermi,filterma);
+   file.setFileFilter(filtroImagen);
    file.showOpenDialog(this);
    /**abrimos el archivo seleccionado*/
    File abre=file.getSelectedFile();
- 
    /**recorremos el archivo, lo leemos para plasmarlo
    *en el area de texto*/
    if(abre!=null)
@@ -51,7 +50,9 @@ public class CargaA extends javax.swing.JFrame{
          texto+= aux+ "\n";
       }
          lee.close();
-    }    
+         archivos.close();
+    }
+   this.dispose();
    }
    catch(IOException ex)
    {
@@ -59,6 +60,7 @@ public class CargaA extends javax.swing.JFrame{
            "\nNo se ha encontrado el archivo",
                  "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
     }
+  
   return texto;//El texto se almacena en el JTextArea
 }
     public String[][] getMatriz(){

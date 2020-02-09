@@ -5,6 +5,8 @@
  */
 package compi1_practica1;
 
+import Archivos.*;
+
 /**
  *
  * @author aaron
@@ -15,7 +17,11 @@ public class Compi1_Practica1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hola mundo");
+       CargaA m = new CargaA();
+       LeeFichero l = new LeeFichero();
+      // l.lee("Er");
+       String obtener = m.abrirArchivo("er");
+        System.out.println(obtener);
     }
     
 }
