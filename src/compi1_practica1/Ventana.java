@@ -5,6 +5,7 @@
  */
 package compi1_practica1;
 import Archivos.*;
+import Procesos.*;
 /**
  *
  * @author aaron
@@ -34,6 +35,7 @@ public class Ventana extends javax.swing.JFrame {
         txtEntrada = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         lblPrueba = new javax.swing.JLabel();
+        btnAnalizar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -50,16 +52,29 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Archivo de entrada");
 
+        btnAnalizar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnAnalizar.setText("Analizar");
+        btnAnalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblPrueba))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblPrueba)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(btnAnalizar)))
                 .addContainerGap(620, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -71,7 +86,9 @@ public class Ventana extends javax.swing.JFrame {
                 .addComponent(lblPrueba)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAnalizar)
+                .addGap(55, 55, 55))
         );
 
         jMenu1.setText("Archivo");
@@ -137,6 +154,11 @@ public class Ventana extends javax.swing.JFrame {
            carga.guardarComoArchivo(txtEntrada.getText(), ".er");
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
+        AnalizadorLexico analizadorLexico = new AnalizadorLexico();
+        analizadorLexico.analizarL(txtEntrada.getText());
+    }//GEN-LAST:event_btnAnalizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +195,7 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
