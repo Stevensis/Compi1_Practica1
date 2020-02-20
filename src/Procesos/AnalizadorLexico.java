@@ -35,9 +35,31 @@ public class AnalizadorLexico {
             switch(estado){
                 case 0: //En el caso inicial vamos a aceptar todos lo token que sea parte de un caracter
                     if (Character.isLetter(c)) {   aux += c;  estado=1;  } //Si viene una letra, va pasar a otro estado
+                    else if (Character.isDigit(c)) {   aux += c;  agregarTk(Token.Tipo.NUMERO_ENTERO);  } //va agregar numeros enteros
                     else if (c=='/') {   aux += c;  estado=2;  } // Si viene / es un comienzo de comentario
                     else if (c=='<') {   aux += c;  estado=4;  } // Si viene < es un comienzo de comentario multi linea
                     else if (c=='"') { aux += c;  estado=7;   } //Comienzo de una cadena
+                    else if (c=='%') { aux += c;  agregarTk(Token.Tipo.PORCENTAJE);  }
+                    else if (c=='-') { aux += c;  agregarTk(Token.Tipo.MENOS);  }
+                    else if (c=='>') { aux += c;  agregarTk(Token.Tipo.MAYORQUE);  }
+                    else if (c=='~') { aux += c;  agregarTk(Token.Tipo.EQUIVALENCIA);  }
+                    else if (c=='*') { aux += c;  agregarTk(Token.Tipo.ASTERISCO);  }
+                    else if (c==';') { aux += c;  agregarTk(Token.Tipo.PUNTO_Y_C);  }
+                    else if (c==':') { aux += c;  agregarTk(Token.Tipo.DOS_PUNTOS);  }
+                    else if (c==',') { aux += c;  agregarTk(Token.Tipo.COMA);  }
+                    else if (c=='|') { aux += c;  agregarTk(Token.Tipo.BARRA_V);  }
+                    else if (c=='.') { aux += c;  agregarTk(Token.Tipo.PUNTO);  }
+                    else if (c=='+') { aux += c;  agregarTk(Token.Tipo.MAS);  }
+                    else if (c=='?') { aux += c;  agregarTk(Token.Tipo.INTERROGACION_DE);  }
+                    else if (c=='{') { aux += c;  agregarTk(Token.Tipo.LLAVE_IZ);  }
+                    else if (c=='}') { aux += c;  agregarTk(Token.Tipo.LLAVE_DE);  }
+                    else if (ascii>32 && ascii<126){ aux += c; agregarTk(Token.Tipo.SIGNO);}
+                    else{
+                        if(!Character.isWhitespace(c)){
+                            aux += c;
+                            agregarErrores("Caracter Desconocido");
+                        }
+                    }
                     break;
                 case 1: //Analiza si viene una letra
                     if (Character.isLetter(c)) { aux += c;  estado=1; }
@@ -73,7 +95,9 @@ public class AnalizadorLexico {
                     break;
             }
         }
-        
+        for (int i = 0; i <ListErr.size() ; i++) {
+            System.out.println("Caracter: "+ListErr.get(i).getValor()+" -"+ListErr.get(i).getDescripcion());
+        }
         return lstToken;
     }
     

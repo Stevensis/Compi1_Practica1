@@ -27,7 +27,17 @@ public class Token {
         DIAGONAL,
         MENORQUE,
         EXCLAMACION,
-        MAYORQUE
+        MAYORQUE,
+        MENOS,
+        EQUIVALENCIA,
+        ASTERISCO,
+        COMA,
+        BARRA_V,
+        PUNTO,
+        MAS,
+        INTERROGACION_DE,
+        DOS_PUNTOS,
+        SIGNO,
     }
     
     private Tipo tipoToken;
@@ -97,6 +107,28 @@ public class Token {
                     return "EXCLAMACION";
                 case MAYORQUE:
                     return "MAYOR_QUE";
+                case MENOS:
+                    return "MENOS";
+                case EQUIVALENCIA:
+                    return "EQUIVALENCIA";
+                case ASTERISCO:
+                    return "ASTERISCO";
+                case COMA:
+                    return "COMA";
+                case BARRA_V:
+                    return "BARRA_VERTICAL";
+                case PUNTO:
+                    return "PUNTO";
+                case MAS:
+                    return "MAS";
+                case INTERROGACION_DE:
+                    return "INTERROGACION_DERECHA";
+                case DOS_PUNTOS:
+                    return "DOS_PUNTOS";
+                case SIGNO:
+                    return "SIGNO";
+                case NUMERO_ENTERO:
+                    return "NUMERO_ENTERO";
                 default:
                     return "";
                     
