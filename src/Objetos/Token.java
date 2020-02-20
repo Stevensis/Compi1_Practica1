@@ -22,7 +22,12 @@ public class Token {
         COMILLAS,
         PORCENTAJE,
         ID,
-        NUMERO_ENTERO
+        NUMERO_ENTERO,
+        LETRA,
+        DIAGONAL,
+        MENORQUE,
+        EXCLAMACION,
+        MAYORQUE
     }
     
     private Tipo tipoToken;
@@ -54,22 +59,26 @@ public class Token {
     public int getColumna() {
         return columna;
     }
-        
+    
+    public Token.Tipo getTipoT(){
+        return tipoToken;
+    }
+    
     public String getTipo() {
             switch (tipoToken)
             {
                 case PALABRA_R:
                     return "PALABRA_RESERVADA";
                 case CADENA:
-                    return "DOS_PUNTOS";
+                    return "CADENA";
                 case LLAVE_IZ:
                     return "LLAVE_IZQUIERDA";
                 case LLAVE_DE:
                     return "LLAVE_DERECHA";
                 case COMENTARIO_L:
-                    return "CADENA";
+                    return "COMENTARIO_LINEA";
                 case COMENTARIO_ML:
-                    return "NUMERO_ENTERO";
+                    return "COMENTARIO_MULTI_LINEAS";
                 case PUNTO_Y_C:
                     return "PUNTO_Y_COMA";
                 case PORCENTAJE:
@@ -78,8 +87,19 @@ public class Token {
                     return "COMILLAS";
                 case ID:
                     return "ID";
+                case LETRA:
+                    return "LETRA";
+                case DIAGONAL:
+                    return "DIAGONAL";
+                case MENORQUE:
+                     return "MENOR_QUE";
+                case EXCLAMACION:
+                    return "EXCLAMACION";
+                case MAYORQUE:
+                    return "MAYOR_QUE";
                 default:
                     return "";
+                    
             }
             
         }

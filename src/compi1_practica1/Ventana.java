@@ -5,7 +5,9 @@
  */
 package compi1_practica1;
 import Archivos.*;
+import Objetos.Token;
 import Procesos.*;
+import java.util.ArrayList;
 /**
  *
  * @author aaron
@@ -14,6 +16,7 @@ public class Ventana extends javax.swing.JFrame {
     //Se instancia la clase para el manejo de archivos
     CargaA carga = new CargaA();
     String contenido = "";
+    ArrayList<Token> ListaToken = new ArrayList<Token>();
     /**
      * Creates new form Ventana
      */
@@ -156,9 +159,16 @@ public class Ventana extends javax.swing.JFrame {
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         AnalizadorLexico analizadorLexico = new AnalizadorLexico();
-        analizadorLexico.analizarL(txtEntrada.getText());
+        ListaToken=analizadorLexico.analizarL(txtEntrada.getText());
+        prueba();
+        
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
+    public void prueba(){
+        for (int i = 0; i < ListaToken.size(); i++) {
+            System.out.println("Lexema: "+ListaToken.get(i).getValor()+" Token: "+ListaToken.get(i).getTipo());
+        }
+    }
     /**
      * @param args the command line arguments
      */
