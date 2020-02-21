@@ -6,6 +6,7 @@
 package Procesos;
 
 import Objetos.Conjunto;
+import Objetos.Lexema;
 import Objetos.Nodo;
 import Objetos.Token;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class AnalizadorTokens {
     private ArrayList<Token> lstToken;
     private ArrayList<Conjunto> lstConjunto = new ArrayList<Conjunto>();
+    private ArrayList<Lexema> lstLexema = new ArrayList<Lexema>(); 
     public AnalizadorTokens(ArrayList<Token> lstToken) {
         this.lstToken = lstToken;
     }
@@ -56,12 +58,46 @@ public class AnalizadorTokens {
                                conjunto.setConjunto(lstChar);
                            }
                            lstConjunto.add(conjunto);
-                        }
-                    
-                    
+                        }                 
                 break;
-                
+                case ID:
+                    String id = lstToken.get(i).getValor();
+                    i++;
+                    i++;
+                    i++;
+                    ArrayList<Token> expresion = new ArrayList<Token>(); 
+                    do {
+                        expresion.add(lstToken.get(i));
+                        i++;
+                    } while (lstToken.get(i).getTipoT()!=Token.Tipo.PUNTO_Y_C);
+                    for (int j = 0; j < expresion.size(); j++) {
+                        System.out.println("Expresion: " +id+" Tiene: "+expresion.get(j).getValor());
+                    }
+                    break;
+                case PORCENTAJE:
+                    i++;
+                    i++;
+                    i++;
+                    i++;
+                    do {
+                        if (lstToken.get(i).getTipoT()==Token.Tipo.ID) {
+                            Lexema lexema = new Lexema();
+                            lexema.setExpresion(lstToken.get(i).getValor());
+                            i++;
+                            i++;
+                            i++;
+                            if (lstToken.get(i).getTipoT()==Token.Tipo.CADENA) {
+                                lexema.setCadena(lstToken.get(i).getValor());
+                                lstLexema.add(lexema);i++;
+                            }else{i++;}
+                        }else{i++;}
+                    } while (lstToken.get(i).getTipoT()!=Token.Tipo.LLAVE_DE);
+                    
+                    break;
             }
+        }
+        for (int i = 0; i <lstLexema.size(); i++) {
+            System.out.println("Expresion: "+lstLexema.get(i).getExpresion()+" Tiene Lexema:"+lstLexema.get(i).getCadena());
         }
     }
 
