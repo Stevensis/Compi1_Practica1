@@ -6,8 +6,10 @@
 package compi1_practica1;
 import Archivos.*;
 import Objetos.Token;
+import Objetos.Error;
 import Procesos.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author aaron
@@ -17,6 +19,7 @@ public class Ventana extends javax.swing.JFrame {
     CargaA carga = new CargaA();
     String contenido = "";
     ArrayList<Token> ListaToken = new ArrayList<Token>();
+    ArrayList<Error> ListaError = new ArrayList<Error>();
     /**
      * Creates new form Ventana
      */
@@ -160,15 +163,23 @@ public class Ventana extends javax.swing.JFrame {
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
         AnalizadorLexico analizadorLexico = new AnalizadorLexico();
         ListaToken=analizadorLexico.analizarL(txtEntrada.getText());
-        prueba();
+        CreatePage create = new CreatePage();
+        ListaError=analizadorLexico.getListErr();
+        if(ListaError.size()<1){     
+            JOptionPane.showMessageDialog(null,
+         "Analisis correcto",
+             "Información",JOptionPane.INFORMATION_MESSAGE);
+            create.pageTokens(ListaToken);
+        }else{
+            JOptionPane.showMessageDialog(null,
+         "Se encontro errores lexicos",
+             "Advertencia",JOptionPane.WARNING_MESSAGE);
+            create.pageError(ListaError);
+        }
         
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
-    public void prueba(){
-        for (int i = 0; i < ListaToken.size(); i++) {
-            System.out.println("Lexema: "+ListaToken.get(i).getValor()+" Token: "+ListaToken.get(i).getTipo());
-        }
-    }
+  
     /**
      * @param args the command line arguments
      */

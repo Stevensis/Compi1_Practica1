@@ -76,7 +76,7 @@ public class AnalizadorLexico {
                     else{ aux += c;  estado=3; }
                     break;
                 case 4:
-                    if (c=='!') {   aux += c;  estado=5;  }
+                    if (c=='!') { aux+="</>";  aux += c;  estado=5;  }
                     else{ agregarTk(Token.Tipo.MENORQUE); i--; columna--; }
                     break;
                 case 5:
@@ -94,9 +94,6 @@ public class AnalizadorLexico {
                 default:
                     break;
             }
-        }
-        for (int i = 0; i <ListErr.size() ; i++) {
-            System.out.println("Caracter: "+ListErr.get(i).getValor()+" -"+ListErr.get(i).getDescripcion());
         }
         return lstToken;
     }
@@ -127,5 +124,10 @@ public class AnalizadorLexico {
             comp = true; //Para que vuelva a guardar nuevamente la culmna inicial del token
             estado = 0;
         }
+
+    public ArrayList<Error> getListErr() {
+        return ListErr;
+    }
+        
     
 }
