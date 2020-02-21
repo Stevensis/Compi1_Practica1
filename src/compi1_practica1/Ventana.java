@@ -5,6 +5,7 @@
  */
 package compi1_practica1;
 import Archivos.*;
+import Objetos.Conjunto;
 import Objetos.Token;
 import Objetos.Error;
 import Procesos.*;
@@ -20,6 +21,7 @@ public class Ventana extends javax.swing.JFrame {
     String contenido = "";
     ArrayList<Token> ListaToken = new ArrayList<Token>();
     ArrayList<Error> ListaError = new ArrayList<Error>();
+    ArrayList<Conjunto> ListaConjuntos = new ArrayList<Conjunto>();
     /**
      * Creates new form Ventana
      */
@@ -165,18 +167,23 @@ public class Ventana extends javax.swing.JFrame {
         ListaToken=analizadorLexico.analizarL(txtEntrada.getText());
         CreatePage create = new CreatePage();
         ListaError=analizadorLexico.getListErr();
-        if(ListaError.size()<1){     
+        if(ListaError.size()<1){    
+            AnalizadorTokens analizadorTk= new AnalizadorTokens(ListaToken);
+            analizadorTk.analisisTk();
+            ListaConjuntos=analizadorTk.getLstConjunto();
             JOptionPane.showMessageDialog(null,
          "Analisis correcto",
              "Información",JOptionPane.INFORMATION_MESSAGE);
             create.pageTokens(ListaToken);
+            for (int i = 0; i < ListaConjuntos.size(); i++) {
+                System.out.println("Conjunto: "+ListaConjuntos.get(i).getId()+" Tiene:"+ListaConjuntos.get(i).getConjunto().toString());
+            }
         }else{
             JOptionPane.showMessageDialog(null,
          "Se encontro errores lexicos",
              "Advertencia",JOptionPane.WARNING_MESSAGE);
             create.pageError(ListaError);
-        }
-        
+        }       
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
   
