@@ -38,7 +38,7 @@ public class AnalizadorLexico {
                     else if (Character.isDigit(c)) {   aux += c;  agregarTk(Token.Tipo.NUMERO_ENTERO);  } //va agregar numeros enteros
                     else if (c=='/') {   aux += c;  estado=2;  } // Si viene / es un comienzo de comentario
                     else if (c=='<') {   aux += c;  estado=4;  } // Si viene < es un comienzo de comentario multi linea
-                    else if (c=='"') { aux += c;  estado=7;   } //Comienzo de una cadena
+                    else if (c=='"') {   estado=7;   } //Comienzo de una cadena
                     else if (c=='%') { aux += c;  agregarTk(Token.Tipo.PORCENTAJE);  }
                     else if (c=='-') { aux += c;  agregarTk(Token.Tipo.MENOS);  }
                     else if (c=='>') { aux += c;  agregarTk(Token.Tipo.MAYORQUE);  }
@@ -88,7 +88,7 @@ public class AnalizadorLexico {
                     else{ aux += c;  estado=5;  }
                     break;
                 case 7:
-                    if (c=='"'){ aux += c;  agregarTk(Token.Tipo.CADENA);  }
+                    if (c=='"'){   agregarTk(Token.Tipo.CADENA);  }
                     else { aux += c;  estado=7;}
                     break;
                 default:

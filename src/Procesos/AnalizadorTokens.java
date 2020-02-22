@@ -18,6 +18,7 @@ public class AnalizadorTokens {
     private ArrayList<Token> lstToken;
     private ArrayList<Conjunto> lstConjunto = new ArrayList<Conjunto>();
     private ArrayList<Lexema> lstLexema = new ArrayList<Lexema>(); 
+    private ArrayList<ArbolBinario> lstArbol = new ArrayList<ArbolBinario>();
     public AnalizadorTokens(ArrayList<Token> lstToken) {
         this.lstToken = lstToken;
     }
@@ -65,14 +66,16 @@ public class AnalizadorTokens {
                     i++;
                     i++;
                     i++;
-                    ArrayList<Token> expresion = new ArrayList<Token>(); 
+                    ArrayList<Token> expresion = new ArrayList<Token>(); //Esta lista de token va guardar los tokens que conforman la expresion regular para luego analizarlos
                     do {
+                        if(lstToken.get(i).getTipoT()!=Token.Tipo.LLAVE_IZ && lstToken.get(i).getTipoT()!=Token.Tipo.LLAVE_DE){
                         expresion.add(lstToken.get(i));
                         i++;
+                        }else{i++;}
+                        
                     } while (lstToken.get(i).getTipoT()!=Token.Tipo.PUNTO_Y_C);
-                    for (int j = 0; j < expresion.size(); j++) {
-                        System.out.println("Expresion: " +id+" Tiene: "+expresion.get(j).getValor());
-                    }
+                    ArbolBinario arbolBinario = new ArbolBinario(expresion,id);
+                    lstArbol.add(arbolBinario);
                     break;
                 case PORCENTAJE:
                     i++;
@@ -96,6 +99,10 @@ public class AnalizadorTokens {
                     break;
             }
         }
+        for (int j = 0; j < lstArbol.size(); j++) {
+                        lstArbol.get(j).graficarArbol();
+                        lstArbol.get(j).creacionDibujo();
+                    }
         for (int i = 0; i <lstLexema.size(); i++) {
             System.out.println("Expresion: "+lstLexema.get(i).getExpresion()+" Tiene Lexema:"+lstLexema.get(i).getCadena());
         }

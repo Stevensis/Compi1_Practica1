@@ -1,0 +1,22 @@
+digraph {
+node [shape = rectangle, height=0.5, width=1.2];
+"Objetos.Nodo@1d245aaf"[shape = record, label = "P: [1]|{false |abecedario}|U: [1] "] 
+"Objetos.Nodo@7a88bd34"[shape = record, label = "P: [1]|{false |+}|U: [1] "] 
+"Objetos.Nodo@7a88bd34" -> "Objetos.Nodo@1d245aaf" 
+"Objetos.Nodo@1b2f68a"[shape = record, label = "P: [1]|{false |.}|U: [2, 4] "] 
+"Objetos.Nodo@1b2f68a" -> "Objetos.Nodo@6fc3b598" 
+"Objetos.Nodo@1b2f68a" -> "Objetos.Nodo@7a88bd34" 
+"Objetos.Nodo@500d6bed"[shape = record, label = "P: [2]|{false |conjnum}|U: [2] "] 
+"Objetos.Nodo@6fc3b598"[shape = record, label = "P: [2]|{false |.}|U: [2, 4] "] 
+"Objetos.Nodo@6fc3b598" -> "Objetos.Nodo@6fd31dc5" 
+"Objetos.Nodo@6fc3b598" -> "Objetos.Nodo@500d6bed" 
+"Objetos.Nodo@79c3a013"[shape = record, label = "P: [3]|{false |:}|U: [3] "] 
+"Objetos.Nodo@bdea5c6"[shape = record, label = "P: [3]|{false |.}|U: [4] "] 
+"Objetos.Nodo@bdea5c6" -> "Objetos.Nodo@30b7e553" 
+"Objetos.Nodo@bdea5c6" -> "Objetos.Nodo@79c3a013" 
+"Objetos.Nodo@47fdfbb5"[shape = record, label = "P: [4]|{false |abecedario}|U: [4] "] 
+"Objetos.Nodo@30b7e553"[shape = record, label = "P: [4]|{false |+}|U: [4] "] 
+"Objetos.Nodo@30b7e553" -> "Objetos.Nodo@47fdfbb5" 
+"Objetos.Nodo@6fd31dc5"[shape = record, label = "P: [3]|{true |?}|U: [4] "] 
+"Objetos.Nodo@6fd31dc5" -> "Objetos.Nodo@bdea5c6" 
+}

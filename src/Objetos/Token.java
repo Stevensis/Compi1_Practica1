@@ -38,6 +38,7 @@ public class Token {
         INTERROGACION_DE,
         DOS_PUNTOS,
         SIGNO,
+        NUMERAL 
     }
     
     private Tipo tipoToken;

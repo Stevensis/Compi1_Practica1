@@ -5,6 +5,8 @@
  */
 package Objetos;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -12,11 +14,18 @@ import java.util.ArrayList;
  */
 public class Nodo {
     private Token valor;
-    private int contadorH;
+    private int contadorH=0;
     private Nodo izquierda,derecha;
     ArrayList<Integer> primeros;
     ArrayList<Integer> ultimos;
     boolean anulable;
+
+    public Nodo(Token valor) {
+        this.valor = valor;
+        this.izquierda=this.derecha=null;
+        primeros = new ArrayList<>();
+        ultimos = new ArrayList<>();
+    }
 
     public Token getValor() {
         return valor;
@@ -83,6 +92,13 @@ public class Nodo {
         this.ultimos.add(a);
     }
 
-    
+    public void noDuplicar() {
+        Set<Integer> lt = new HashSet<>(this.primeros);
+        Set<Integer> ls = new HashSet<>(this.ultimos);
+        this.primeros.clear();
+        this.primeros.addAll(lt);
+        this.ultimos.clear();
+        this.ultimos.addAll(ls);
+    }
     
 }

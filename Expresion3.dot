@@ -1,0 +1,42 @@
+digraph {
+node [shape = rectangle, height=0.5, width=1.2];
+"Objetos.Nodo@23da1861"[shape = record, label = "P: [1]|{false |abecedario}|U: [1] "] 
+"Objetos.Nodo@5d547949"[shape = record, label = "P: [1, 2]|{false |\|}|U: [1, 2] "] 
+"Objetos.Nodo@5d547949" -> "Objetos.Nodo@52c692cd" 
+"Objetos.Nodo@5d547949" -> "Objetos.Nodo@23da1861" 
+"Objetos.Nodo@52c692cd"[shape = record, label = "P: [2]|{false |_}|U: [2] "] 
+"Objetos.Nodo@7aceeb73"[shape = record, label = "P: [1, 2]|{true |*}|U: [1, 2] "] 
+"Objetos.Nodo@7aceeb73" -> "Objetos.Nodo@5d547949" 
+"Objetos.Nodo@924ed5b"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [3] "] 
+"Objetos.Nodo@924ed5b" -> "Objetos.Nodo@77445307" 
+"Objetos.Nodo@924ed5b" -> "Objetos.Nodo@7aceeb73" 
+"Objetos.Nodo@1172f7d8"[shape = record, label = "P: [3]|{false |conjnum}|U: [3] "] 
+"Objetos.Nodo@77445307"[shape = record, label = "P: [3]|{false |+}|U: [3] "] 
+"Objetos.Nodo@77445307" -> "Objetos.Nodo@1172f7d8" 
+"Objetos.Nodo@1cea13f6"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [4] "] 
+"Objetos.Nodo@1cea13f6" -> "Objetos.Nodo@320a6b05" 
+"Objetos.Nodo@1cea13f6" -> "Objetos.Nodo@924ed5b" 
+"Objetos.Nodo@320a6b05"[shape = record, label = "P: [4]|{false |\>}|U: [4] "] 
+"Objetos.Nodo@6783ca28"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [5] "] 
+"Objetos.Nodo@6783ca28" -> "Objetos.Nodo@61c92d37" 
+"Objetos.Nodo@6783ca28" -> "Objetos.Nodo@1cea13f6" 
+"Objetos.Nodo@2df0f75b"[shape = record, label = "P: [5]|{false |conjnum}|U: [5] "] 
+"Objetos.Nodo@61c92d37"[shape = record, label = "P: [5]|{false |+}|U: [5] "] 
+"Objetos.Nodo@61c92d37" -> "Objetos.Nodo@2df0f75b" 
+"Objetos.Nodo@4c43e3a3"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [6] "] 
+"Objetos.Nodo@4c43e3a3" -> "Objetos.Nodo@3568a289" 
+"Objetos.Nodo@4c43e3a3" -> "Objetos.Nodo@6783ca28" 
+"Objetos.Nodo@3568a289"[shape = record, label = "P: [6]|{false |es }|U: [6] "] 
+"Objetos.Nodo@1de09186"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [7, 8] "] 
+"Objetos.Nodo@1de09186" -> "Objetos.Nodo@3700f74e" 
+"Objetos.Nodo@1de09186" -> "Objetos.Nodo@4c43e3a3" 
+"Objetos.Nodo@648d44f6"[shape = record, label = "P: [7]|{false |TRUE}|U: [7] "] 
+"Objetos.Nodo@3700f74e"[shape = record, label = "P: [7, 8]|{false |\|}|U: [7, 8] "] 
+"Objetos.Nodo@3700f74e" -> "Objetos.Nodo@1481de04" 
+"Objetos.Nodo@3700f74e" -> "Objetos.Nodo@648d44f6" 
+"Objetos.Nodo@1481de04"[shape = record, label = "P: [8]|{false |FALSE}|U: [8] "] 
+"Objetos.Nodo@df411b3"[shape = record, label = "P: [1, 2, 3]|{false |.}|U: [9] "] 
+"Objetos.Nodo@df411b3" -> "Objetos.Nodo@3dfe2dc4" 
+"Objetos.Nodo@df411b3" -> "Objetos.Nodo@1de09186" 
+"Objetos.Nodo@3dfe2dc4"[shape = record, label = "P: [9]|{false |.}|U: [9] "] 
+}
